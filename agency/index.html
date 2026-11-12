@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QuoteReady Client Launch Kit (for agencies)</title>
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="../assets/site.css">
+  <style>
+    .kit { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: start; }
+    @media (max-width: 900px) { .kit { grid-template-columns: 1fr; } }
+    .kit label { display: block; font-weight: 700; margin: 14px 0 4px; }
+    .kit .hint { font-weight: 400; color: var(--muted); font-size: 14px; display: block; }
+    .kit input { width: 100%; font: inherit; padding: 11px 12px; border: 1.5px solid #9aa5b5; border-radius: 10px; min-height: 46px; }
+    .kit textarea { width: 100%; font: 14px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; padding: 10px; border: 1.5px solid #9aa5b5; border-radius: 10px; min-height: 96px; background: #fbfbfb; }
+    .err { color: #b42318; font-weight: 700; min-height: 1.4em; margin: 6px 0 0; }
+    .out h3 { font-family: var(--sans); font-size: 1rem; margin: 16px 0 6px; letter-spacing: 0; }
+    .copy { margin-top: 6px; }
+    ol.check li { margin: 6px 0; }
+    .demos { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+    .demos a { display: block; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; text-decoration: none; color: var(--ink); font-weight: 700; }
+    .demos a span { display: block; font-weight: 400; color: var(--muted); font-size: 14px; }
+  </style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav"><div class="wrap"><a class="logo" href="../"><span class="mark" aria-hidden="true">Q</span> QuoteReady <small>Client Launch Kit</small></a></div></header>
+<main id="main">
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">For agencies and web designers</span>
+        <h1 style="font-size:clamp(2rem,4vw,2.8rem);margin:10px 0">Launch a client in about an hour</h1>
+        <p>Make a fresh copy of the QuoteReady Google Sheet for each client (never share one sheet between clients). After you deploy their web app, paste its address below to get every link and code snippet you need. Nothing you type here is sent anywhere. It all stays in this browser tab.</p>
+      </div>
+
+      <div class="kit">
+        <form class="card" id="kitForm" novalidate>
+          <h2 style="font-size:1.4rem;margin:0 0 4px">1. Client details</h2>
+          <label for="client">Client business name</label>
+          <input id="client" autocomplete="off" maxlength="80" placeholder="Example: GreenEdge Lawn Care">
+          <label for="api">Client's web app address <span class="hint">From the client's sheet: QuoteReady menu &gt; Get my website code. It ends in /exec</span></label>
+          <input id="api" autocomplete="off" inputmode="url" placeholder="https://script.google.com/macros/s/.../exec" aria-describedby="apiErr">
+          <p class="err" id="apiErr" role="alert"></p>
+          <label for="base">Quote page address <span class="hint">Where the QuoteReady files are hosted. Filled in for you.</span></label>
+          <input id="base" autocomplete="off" inputmode="url">
+          <button class="btn dark" type="submit" style="margin-top:16px;width:100%">Make the client's links and code</button>
+        </form>
+
+        <div class="card out" id="out" aria-live="polite">
+          <h2 style="font-size:1.4rem;margin:0 0 4px">2. Hand-off pack</h2>
+          <p id="outEmpty">Fill in the form to see the client's direct link, website code and button code here.</p>
+          <div id="outFull" hidden>
+            <h3 id="h-link">Direct quote link (Google Business Profile, Facebook, texts, emails, QR codes)</h3>
+            <textarea id="link" readonly aria-labelledby="h-link"></textarea>
+            <button class="btn line small copy" type="button" data-copy="link">Copy link</button>
+            <h3 id="h-embed">Website code (paste into an HTML / Embed / Code block)</h3>
+            <textarea id="embed" readonly aria-labelledby="h-embed"></textarea>
+            <button class="btn line small copy" type="button" data-copy="embed">Copy code</button>
+            <h3 id="h-button">"Get a quote" button code (for a header or any page)</h3>
+            <textarea id="button" readonly aria-labelledby="h-button"></textarea>
+            <button class="btn line small copy" type="button" data-copy="button">Copy button code</button>
+            <p><a id="open" href="#" target="_blank" rel="noopener">Open the client's live quote page</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <div class="section-head"><h2>Launch checklist (per client)</h2><p>Tick these off on every launch. It keeps clients separate and avoids the common mistakes.</p></div>
+      <ol class="check">
+        <li>Make a NEW copy of the QuoteReady master sheet in the account that will own the client's data (best: the client's own Google account; or an agency account you will hand over later).</li>
+        <li>QuoteReady menu &gt; Setup wizard: business name, the client's lead email, brand color, logo, closest industry.</li>
+        <li>Put the client's real prices into Services, Options and Extras. Get the client to approve them in writing (email is fine).</li>
+        <li>Add the client's privacy policy link (a template is in docs/legal).</li>
+        <li>Deploy: Extensions &gt; Apps Script &gt; Deploy &gt; New deployment &gt; Web app &gt; Execute as Me &gt; Anyone.</li>
+        <li>Optional white label: set "Powered by name" to your agency, or "Show Powered by" to No.</li>
+        <li>QuoteReady menu &gt; Check my setup. Fix every FIX line.</li>
+        <li>QuoteReady menu &gt; Send myself a test lead. Confirm the alert arrives and the lead appears.</li>
+        <li>Turn ON reminders and monthly report. Put your agency email in "Also send monthly report to".</li>
+        <li>Paste the website code on the client's site and the direct link on their Google Business Profile.</li>
+        <li>Do one real test from a phone. Then mark the test lead as Spam.</li>
+        <li>Record the client in your own client list: sheet link, owner account, launch date.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head"><h2>Demo links for sales calls</h2><p>Send a prospect the demo for their industry before the call. Sample businesses, nothing is saved.</p></div>
+      <div class="demos" id="demos"></div>
+    </div>
+  </section>
+</main>
+<footer class="site"><div class="wrap"><span>QuoteReady Agency license. Each client must have their own sheet copy.</span><a href="../">Back to QuoteReady</a></div></footer>
+<script src="agency.js"></script>
+</body>
+</html>

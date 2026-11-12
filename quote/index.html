@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' https: data:; connect-src https://script.google.com https://script.googleusercontent.com; form-action 'none'; base-uri 'none'; object-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="robots" content="noindex">
+  <title>Get an instant quote</title>
+  <link rel="stylesheet" href="quote.css">
+</head>
+<body>
+  <a class="skip" href="#qr-main">Skip to the quote form</a>
+  <div class="qr-shell">
+    <header class="qr-header" id="qr-header" aria-busy="true">
+      <div class="qr-brand"><span class="sk sk-logo"></span></div>
+      <h1 id="qr-headline" class="qr-headline"><span class="sk sk-line"></span></h1>
+      <p id="qr-intro" class="qr-intro"></p>
+    </header>
+    <div id="qr-demo-banner" class="qr-demo" hidden></div>
+    <nav aria-label="Progress" class="qr-progress" id="qr-progress" hidden>
+      <ol id="qr-steps"></ol>
+    </nav>
+    <main id="qr-main" class="qr-card" tabindex="-1">
+      <div class="qr-loading" id="qr-loading">
+        <span class="sk sk-line"></span><span class="sk sk-line short"></span><span class="sk sk-box"></span>
+        <p class="qr-sr" role="status">Loading the price list...</p>
+      </div>
+    </main>
+    <div id="qr-livebar" class="qr-livebar" hidden aria-live="polite"></div>
+    <footer class="qr-footer" id="qr-footer"></footer>
+  </div>
+  <noscript><p class="qr-noscript">This quote form needs JavaScript. Please call us instead.</p></noscript>
+  <script src="pricing.js"></script>
+  <script src="templates.js"></script>
+  <script src="quote.js"></script>
+</body>
+</html>
