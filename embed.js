@@ -44,9 +44,10 @@
   frame.style.cssText = 'width:100%;border:0;display:block;min-height:560px;height:720px;background:transparent;color-scheme:normal';
   target.appendChild(frame);
 
-  var frameOrigin = new URL(base, location.href).origin;
+  // Only listen to OUR quote frame. (Checking the window, not the address, keeps working
+  // if the quote page moves to a custom domain and the old address redirects.)
   window.addEventListener('message', function (e) {
-    if (e.origin !== frameOrigin || e.source !== frame.contentWindow || !e.data || typeof e.data !== 'object') return;
+    if (e.source !== frame.contentWindow || !e.data || typeof e.data !== 'object') return;
     if (e.data.type === 'quoteready:height' && typeof e.data.height === 'number') {
       frame.style.height = Math.max(420, Math.min(4000, e.data.height + 4)) + 'px';
     }
