@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Privacy Policy</title>
+<link rel="stylesheet" href="legal.css">
+<style>header .logo .m{display:none}</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header><div class="in"><span class="logo"><span class="m"></span><span data-f="name">Our business</span></span></div></header>
+<main id="main">
+<h1>Privacy Policy for <span data-f="name">our business</span></h1>
+<p class="updated">Effective <span data-f="date">2026</span></p>
+
+<div class="summary">
+<h2>The short version</h2>
+<ul>
+<li>When you ask for a price, we collect only what we need to answer you.</li>
+<li>We use it to send your estimate, contact you about your request, and schedule service.</li>
+<li>We never sell your information.</li>
+<li>Ask us any time to see, fix or delete your information.</li>
+</ul>
+</div>
+
+<h2>1. Who we are</h2>
+<p><span data-f="name">Our business</span> ("we," "us") <span data-f="areaSentence"></span>This policy explains how we handle information you give us through our online quote form.</p>
+
+<h2>2. What we collect</h2>
+<p>When you request a quote, we collect:</p>
+<ul>
+<li>Your name, email address and phone number (if you give it).</li>
+<li>Your ZIP code or address (if we ask for it), so we know where the job is.</li>
+<li>The service details you choose, any note you write, and how you prefer to be contacted.</li>
+<li>Whether you agreed to receive occasional offers by email.</li>
+<li>The web page you came from, including advertising campaign tags if present.</li>
+</ul>
+<p>We do not collect payment card information through the quote form.</p>
+
+<h2>3. How we use it</h2>
+<ul>
+<li>To show you an estimate and email you a copy.</li>
+<li>To contact you about your request and schedule service.</li>
+<li>To send you one follow-up email about your request, which includes an unsubscribe link.</li>
+<li>To send occasional offers, only if you checked the box agreeing to them.</li>
+<li>To keep normal business records.</li>
+</ul>
+
+<h2>4. Where it is stored</h2>
+<p>Your request is stored in our business Google account (Google Sheets) and sent to our business email. Google provides these services to us under its own terms. Our quote page is hosted by a web host that may log technical information such as your IP address, as most websites do.</p>
+
+<h2>5. Sharing</h2>
+<p>We do not sell or rent your information. We share it only with service providers that help us run our business (such as Google), or when the law requires it. If our website uses analytics or advertising tools, they may be told that a quote was requested and its estimated value, but not your name, email or phone number.</p>
+
+<h2>6. Your choices</h2>
+<ul>
+<li>You can unsubscribe from our emails any time using the link in the email, or by replying "stop."</li>
+<li>You can ask us to see, correct or delete your information by contacting us below.</li>
+</ul>
+
+<h2>7. How long we keep it</h2>
+<p>We keep quote requests for up to 24 months for our records, unless you become a customer or ask us to delete them sooner.</p>
+
+<h2>8. Children</h2>
+<p>Our quote form is for adults. We do not knowingly collect information from children under 13.</p>
+
+<h2>9. Changes</h2>
+<p>We may update this policy and will change the date at the top when we do.</p>
+
+<h2>10. Contact us</h2>
+<p><span data-f="name">Our business</span><br><span data-f="contact"></span></p>
+</main>
+<script>
+(function () {
+  var q = new URLSearchParams(location.search);
+  var clean = function (v, max) { return String(v || '').replace(/[\u0000-\u001f<>]/g, '').trim().slice(0, max); };
+  var name = clean(q.get('n'), 80) || 'Our business';
+  var email = clean(q.get('e'), 120);
+  var phone = clean(q.get('p'), 40);
+  var area = clean(q.get('a'), 200);
+  var date = clean(q.get('d'), 40) || new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  document.title = 'Privacy Policy | ' + name;
+  document.querySelectorAll('[data-f="name"]').forEach(function (el) { el.textContent = name; });
+  document.querySelectorAll('[data-f="date"]').forEach(function (el) { el.textContent = date; });
+  document.querySelectorAll('[data-f="areaSentence"]').forEach(function (el) { el.textContent = area ? 'serves ' + area + '. ' : ''; });
+  var c = document.querySelector('[data-f="contact"]');
+  if (/^[^\s@<>]+@[^\s@<>]+\.[a-z]{2,}$/i.test(email)) { var a = document.createElement('a'); a.href = 'mailto:' + email; a.textContent = email; c.appendChild(a); }
+  if (phone) { if (c.childNodes.length) c.appendChild(document.createTextNode(' | ')); c.appendChild(document.createTextNode(phone)); }
+})();
+</script>
+</body>
+</html>
